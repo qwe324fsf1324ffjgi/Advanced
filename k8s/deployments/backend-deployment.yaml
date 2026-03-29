@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todoapp-backend
+  namespace: todoapp
+  labels:
+    app: todoapp-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todoapp-backend
+  template:
+    metadata:
+      labels:
+        app: todoapp-backend
+    spec:
+      containers:
+        - name: todoapp-backend
+          image: 114312230165.dkr.ecr.eu-north-1.amazonaws.com/todoapp-prod-backend:latest
+          ports:
+            - containerPort: 5000
+          envFrom:
+            - configMapRef:
+                name: todoapp-config
+            - secretRef:
+                name: todoapp-secret
+          volumeMounts:
+            - name: task-storage
+              mountPath: /data
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
+      volumes:
+        - name: task-storage
+          emptyDir: {}

@@ -1,0 +1,128 @@
+<!-- app/frontend/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>todoapp Smart Task Manager</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">todoapp</p>
+        <h1>Smart Task Manager</h1>
+        <p class="subtitle">Create, track, filter, and manage tasks from one simple dashboard.</p>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <section class="card">
+        <h2>Create Task</h2>
+        <form id="task-form" class="task-form">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input id="title" name="title" type="text" placeholder="Enter task title" required />
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="4" placeholder="Enter task description"></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="priority">Priority</label>
+              <select id="priority" name="priority">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="status">Status</label>
+              <select id="status" name="status">
+                <option value="pending" selected>Pending</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="dueDate">Due Date</label>
+              <input id="dueDate" name="dueDate" type="date" />
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="submit-button">Add Task</button>
+            <button type="button" id="reset-button" class="button-secondary">Clear</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Filters</h2>
+        <div class="filter-grid">
+          <div class="form-group">
+            <label for="search-filter">Search</label>
+            <input id="search-filter" type="text" placeholder="Search by title or description" />
+          </div>
+
+          <div class="form-group">
+            <label for="status-filter">Status</label>
+            <select id="status-filter">
+              <option value="all" selected>All</option>
+              <option value="pending">Pending</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="priority-filter">Priority</label>
+            <select id="priority-filter">
+              <option value="all" selected>All</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Analytics Summary</h2>
+        <div id="analytics-summary" class="summary-grid"></div>
+      </section>
+
+      <section class="card">
+        <h2>AI Insights</h2>
+        <div id="ai-insights" class="insights-box"></div>
+      </section>
+
+      <section class="card">
+        <h2>Storage Mode</h2>
+        <div id="storage-mode" class="storage-box"></div>
+      </section>
+
+      <section class="card">
+        <h2>Feedback</h2>
+        <div id="message-area" class="message-area" aria-live="polite"></div>
+      </section>
+
+      <section class="card card-full">
+        <div class="section-header">
+          <h2>Task List</h2>
+          <span id="task-count" class="task-count">0 tasks</span>
+        </div>
+        <div id="task-list" class="task-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>

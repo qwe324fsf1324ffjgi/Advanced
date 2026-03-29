@@ -1,0 +1,61 @@
+# =========================
+# TERRAFORM (CRITICAL)
+# =========================
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+
+# Optional: keep lock file tracked (recommended)
+# REMOVE this line if you want consistency across environments
+# .terraform.lock.hcl
+
+# =========================
+# ENV / SECRETS
+# =========================
+.env
+.env.*
+*.pem
+*.key
+*.crt
+
+# =========================
+# PYTHON (LAMBDA)
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.zip
+venv/
+
+# =========================
+# DOCKER
+# =========================
+*.log
+
+# =========================
+# NODE (if used)
+# =========================
+node_modules/
+
+# =========================
+# OS / EDITOR
+# =========================
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+
+# =========================
+# BUILD ARTIFACTS
+# =========================
+dist/
+build/
+
+# =========================
+# LAMBDA ZIP
+# =========================
+lambda/*.zip

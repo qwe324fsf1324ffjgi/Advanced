@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todoapp-frontend
+  namespace: todoapp
+  labels:
+    app: todoapp-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todoapp-frontend
+  template:
+    metadata:
+      labels:
+        app: todoapp-frontend
+    spec:
+      containers:
+        - name: todoapp-frontend
+          image: 114312230165.dkr.ecr.eu-north-1.amazonaws.com/todoapp-prod-frontend:latest
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "200m"
+              memory: "128Mi"
