@@ -15,7 +15,6 @@ A production-style full-stack application built to demonstrate real-world Cloud 
 - Provision AWS infrastructure using Terraform
 - Deploy to Kubernetes (Amazon EKS)
 - Store images in Amazon ECR
-- Automate with CI/CD (GitHub Actions)
 - Upgrade storage to PostgreSQL (Amazon RDS)
 
 ---
@@ -25,7 +24,6 @@ A production-style full-stack application built to demonstrate real-world Cloud 
 - End-to-end application deployment  
 - Infrastructure as Code (Terraform)  
 - Kubernetes production-style deployment  
-- CI/CD automation  
 - Migration from demo → production system  
 
 ---
@@ -36,7 +34,6 @@ User → ALB → EKS → Services → Pods
 Backend → RDS PostgreSQL  
 Images → ECR  
 Infrastructure → Terraform  
-CI/CD → GitHub Actions  
 
 ---
 
@@ -44,7 +41,7 @@ CI/CD → GitHub Actions
 
 **Backend:** Node.js, Express  
 **Frontend:** HTML, CSS, JavaScript, NGINX  
-**DevOps:** Docker, Kubernetes (EKS), Terraform, GitHub Actions  
+**DevOps:** Docker, Kubernetes (EKS), Terraform  
 
 **AWS:** VPC, EKS, ECR, RDS, S3, DynamoDB, ALB  
 
@@ -61,7 +58,6 @@ todoapp/
 ├── docker/
 ├── k8s/
 ├── db/
-├── .github/workflows/
 ├── scripts/
 └── README.md
 ```
@@ -267,16 +263,6 @@ postgres
 
 ---
 
-## 🔁 CI/CD
-
-GitHub Actions:
-
-- Builds Docker images  
-- Pushes images to ECR  
-- Automates delivery  
-
----
-
 ## ⚠️ Important
 
 Replace:
@@ -285,7 +271,7 @@ Replace:
 - `<REGION>`  
 - `<IAM_ROLE_ARN>`  
 
-Align image tags between CI/CD and Kubernetes.  
+Align image tags properly.  
 
 JSON mode is not production-safe.  
 
@@ -299,4 +285,4 @@ https://drive.google.com/file/d/1a99YHdNjTIIhB1gOcUlNc8Q6qpnmFFrK/view?usp=drive
 
 ## 🔥 Final
 
-> I didn’t just learn DevOps… I deployed it.
+> I didn’t just talk DevOps… I deploy it.
